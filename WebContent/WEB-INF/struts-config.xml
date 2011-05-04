@@ -1,0 +1,54 @@
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://struts.apache.org/dtds/struts-config_1_1.dtd">
+
+
+
+<struts-config>
+	<form-beans>
+		<form-bean name="employeeForm" type="com.course.action.EmployeeLoginForm" />
+		<form-bean name="hclemployeeForm" type="com.course.action.HclLoginForm">
+			<form-property name="hclEmpName" type="java.lang.String"></form-property>
+			<form-property name="hclEmpPwd" type="java.lang.String"></form-property>
+		</form-bean>
+	</form-beans>
+
+	<action-mappings>
+
+		<action path="/firstClassAction" type="com.course.action.FirstClassAction"
+			scope="session" validate="true">
+			<forward name="success" path="/success.jsp" />
+		</action>
+
+		<action path="/i18nAction" type="com.course.action.I18nAction"
+			scope="session" validate="true">
+			<forward name="display" path="/display.jsp" />
+		</action>
+
+		<action path="/displayErrorsAction" type="com.course.action.DisplayErrorsAction"
+			scope="session" validate="true">
+			<forward name="displayerror" path="/displayerror.jsp" />
+		</action>
+
+		<action path="/displayMessagesAction" type="com.course.action.DisplayMessagesAction"
+			scope="session" validate="true">
+			<forward name="displaymessages" path="/displaymessages.jsp" />
+		</action>
+
+		<action name="employeeForm" path="/employeeLoginAction"
+			type="com.course.action.EmployeeLoginAction" scope="session"
+			input="/employeelogin.jsp" validate="true">
+			<forward name="success" path="/success.jsp" />
+		</action>
+
+		<action name="hclemployeeForm" path="/hclLoginAction"
+			type="com.course.action.HclLoginAction" scope="session" input="/hcllogin.jsp"
+			validate="true">
+			<forward name="success" path="/success.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<message-resources parameter="ApplicationResources" />
+
+</struts-config>
